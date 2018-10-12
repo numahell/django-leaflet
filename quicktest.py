@@ -71,6 +71,8 @@ class QuickDjangoTest(object):
             'INSTALLED_APPS': self.INSTALLED_APPS + self.apps,
             'STATIC_URL': '/static/',
         }
+        if django.VERSION >= (1, 9, 0) and django.VERSION < (2, 0, 0):
+            conf['SPATIALITE_LIBRARY_PATH'] = 'mod_spatialite.so'
         if 'SPATIALITE_LIBRARY_PATH' in os.environ:
             # If you get SpatiaLite-related errors, refer to this document
             # to find out the proper SPATIALITE_LIBRARY_PATH value
